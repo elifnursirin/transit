@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaderindeki Transit</title>
+    <!-- Tailwind CSS CDN'i -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-xl max-w-4xl w-full text-center">
+        <!-- Başlık -->
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">Kaderindeki Transiti Bul</h1>
+        <p class="text-gray-600 mb-8">Butona basarak kaderindeki Ford Transiti gör!</p>
+        
+        <!-- Fotoğrafları Göster Tuşu -->
+        <button id="show-transit-btn"  style="background-color: black;" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-xl transition duration-300 transform hover:scale-105 shadow-md">
+            Kaderindeki Transitle Tanış
+        </button>
+
+        <!-- Fotoğraf Konteyneri -->
+        <div id="photo-container" class="mt-8 flex justify-center items-center min-h-[300px]">
+            <!-- Ford Transit fotoğrafı buraya eklenecek -->
+        </div>
+    </div>
+
+    <script>
+        // Görsel veri tabanı: Ford Transit fotoğraflarının URL'leri.
+        // Bu dizideki URL'leri kendi Ford Transit fotoğraflarınızla değiştirebilirsiniz.
+        const transitPhotos = [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7gnMBJLY7pDSd4-uTQjTuzAR3_KSxo-MDQw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhqVJqZag3dhffH4tFVI7fc7-HY-NnBhTNng&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkezftPPovd-J0if5PMlNWh9KMANwFEkJ6Sw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRopRHP4XkQ0OUbWq8Q8C9k92avM31Uo4u7bA&s",
+            "https://arbstorage.mncdn.com/ilanfotograflari/2025/07/23/31208544/bc90af00-6a4b-483c-a73a-c77ff9e07674_image_for_silan_31208544_1920x1080.jpg",
+            "https://cdn.wheel-size.com/automobile/body/ford-transit-2006-2014-1674452844.352336.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiGDG9zePXii_cQ1DUJyl682xwRDQoGrONrYfFQdjBqrEocRH2wCymXJyXUZBIICIElV4&usqp=CAU",
+            "https://www.netcarshow.com/Ford-Transit_Connect-2008-wallpaper.jpg",
+            "https://www.cars-data.com/pictures/ford/ford-transit-connect_4396_5.jpg",
+            "https://xn--gvenoto-n2a.com/uploads/thumb_98339581740594118.jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU8-bhdrWTQjqzlHC2aDNdoZf6ql68FK4FU6ilTXa-5VXHHfI1KmCFIBTdMOmpbLqq6co&usqp=CAU",
+            "https://www.hemenotoyedekparca.com/image/cache/catalog/ford-ayna/v184-uzun-kol-sol-700x700.png",
+            "https://c8.alamy.com/comp/2CHPF02/2008-blue-ford-transit-caravans-and-motorhomes-campervans-on-britains-roads-rv-leisure-vehicle-family-holidays-caravanette-vacations-touring-caravan-holiday-van-conversions-vanagon-autohome-life-on-the-road-dormobile-2CHPF02.jpg",
+            "https://www.fordtoptancisi.com/shop/cc/77/myassets/products/636/6c11-17d957-ad.jpg?revision=1746187255",
+            "https://www.hemenotoyedekparca.com/image/cache/catalog/ford-oto-yedek-parca/1673226-700x700.jpg",
+            "https://www.fordikinciel.com/B2ELResim/AracResim2El/120905/0669ed86-abf7-403b-ab81-65b9a11c436c_Buyuk.jpg",
+            "https://savasgungorotoyedekparca.com/images/Urun/ford-transit-2008-jorney-tavan-kasa_66b66.jpeg",
+        ];
+
+        // Gerekli HTML elementlerini seçme
+        const showTransitBtn = document.getElementById('show-transit-btn');
+        const photoContainer = document.getElementById('photo-container');
+
+        // Butona tıklama olay dinleyicisi ekleme
+        showTransitBtn.addEventListener('click', () => {
+            // Önceki fotoğrafı temizle
+            photoContainer.innerHTML = '';
+
+            // Rastgele bir fotoğraf seç
+            const randomIndex = Math.floor(Math.random() * transitPhotos.length);
+            const randomPhotoUrl = transitPhotos[randomIndex];
+
+            // img elementi oluşturma
+            const imgElement = document.createElement('img');
+            imgElement.src = randomPhotoUrl;
+            imgElement.alt = "Kaderindeki Ford Transit";
+
+            // Modern bir görünüm için stil ekleme
+            imgElement.classList.add('rounded-xl', 'shadow-lg', 'mx-auto', 'transition-transform', 'duration-500', 'transform', 'hover:scale-105');
+            
+            // Kapsayıcıya resmi ekleme
+            photoContainer.appendChild(imgElement);
+        });
+    </script>
+</body>
+</html>
